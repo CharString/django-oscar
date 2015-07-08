@@ -299,7 +299,7 @@ class OrderPlacementMixin(CheckoutSessionMixin):
                 pass
             else:
                 site = Site.objects.get_current()
-                ctx['status_url'] = 'http://%s%s' % (site.domain, path)
+                ctx['status_url'] = self.request.build_absolute_uri(path)
         return ctx
 
     # Basket helpers
